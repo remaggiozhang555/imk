@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dumpling Mouth Game</title>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div id="container">
+    <div class="page">
+      <!-- 摄像头背景 -->
+      <video
+        id="camera-bg"
+        autoplay
+        muted
+        playsinline
+      ></video>
+
+      <!-- 嘴巴黄色检测圈 -->
+      <canvas
+        id="mouth-canvas"
+        width="1280"
+        height="832"
+      ></canvas>
+
+      <!-- 饺子 PNG 层 -->
+      <div id="food-layer"></div>
+
+      <!-- 黑屏结束层 -->
+      <div id="game-over-layer">
+        <div class="game-over-content">
+          <div class="game-over-title">Game Over</div>
+          <div class="game-over-score">
+            Final Score: <span id="final-score">0</span>
+          </div>
+          <div class="game-over-text">Restarting...</div>
+        </div>
+      </div>
+
+      <!-- 音频 -->
+      <audio
+        id="bgm-audio"
+        src="./static/BGM.mp3"
+        loop
+        preload="auto"
+      ></audio>
+
+      <audio
+        id="correct-audio"
+        src="./static/correct.mp3"
+        preload="auto"
+      ></audio>
+
+      <audio
+        id="error-audio"
+        src="./static/error.mp3"
+        preload="auto"
+      ></audio>
+
+      <!-- UI 层 -->
+      <div class="ui-layer">
+        <div class="score-board">
+          <span class="score-text">Score:</span>
+          <span id="score">0</span>
+        </div>
+
+        <div class="timer-board">
+          <span class="timer-text">Time:</span>
+          <span id="timer">50</span>
+        </div>
+
+        <div id="health-bar"></div>
+
+        <div id="debug-status">Loading...</div>
+
+        <div id="audio-tip">
+          CLICK TO ENABLE SOUND
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 本地 MediaPipe 文件 -->
+  <script src="./static/mediapipe/camera_utils.js"></script>
+  <script src="./static/mediapipe/face_mesh.js"></script>
+
+  <!-- 主逻辑 -->
+  <script src="./script.js"></script>
+</body>
+</html>
